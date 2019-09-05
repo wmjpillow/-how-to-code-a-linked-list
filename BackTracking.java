@@ -1,5 +1,7 @@
 // Backtracking
 // https://www.cnblogs.com/Xieyang-blog/p/9078268.html
+//https://leetcode.com/problems/combination-sum/discuss/16502/A-general-approach-to-backtracking-questions-in-Java-(Subsets-Permutations-Combination-Sum-Palindrome-Partitioning)
+//Subsets && Permutations && Combination Sum && Palindrome Partitioning 
 
 
 
