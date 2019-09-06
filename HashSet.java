@@ -13,3 +13,8 @@ public static char findFirstRepeat(String A, int n){
     }
     return 0;
 }
+
+
+
+//Java中的HashMap是以键值对 key-value 的形式来存储元素的
+//https://blog.csdn.net/wxgxgp/article/details/79194360
