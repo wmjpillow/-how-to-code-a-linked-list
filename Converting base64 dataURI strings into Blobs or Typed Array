@@ -1,0 +1,89 @@
+//http://eugeneware.com/software-development/converting-base64-datauri-strings-into-blobs-or-typed-array
+
+
+Method 1: Use browserify Buffer to perform base64 conversion:
+
+var canvas = document.getElementById('mycanvas');
+// draw something on canvas
+var dataURI = canvas.toDataURL('image/png');
+// convert to typed array
+var arr = convertDataURIToBinaryBuffer(dataURI);
+// convert to blob and show as image
+var blob = new Blob([arr], { type: 'image/png' }); 
+var img = document.createElement('img');
+img.src = window.URL.createObjectURL(blob);
+document.body.appendChild(img);
+
+var BASE64_MARKER = ';base64,';
+function convertDataURIToBinaryBuffer(dataURI) {
+  var base64Index = dataURI.indexOf(BASE64_MARKER) + BASE64_MARKER.length;
+  var base64 = dataURI.substring(base64Index);
+  var buf = Buffer.from(base64, 'base64');
+  return buf;
+}
+
+
+Method 2: dataURI copying to Uint8Array using atob:
+
+var canvas = document.getElementById('mycanvas');
+// draw something on canvas
+var dataURI = canvas.toDataURL('image/png');
+// convert to typed array
+var arr = convertDataURIToBinary(dataURI);
+// convert to blob and show as image
+var blob = new Blob([arr], { type: 'image/png' }); 
+var img = document.createElement('img');
+img.src = window.URL.createObjectURL(blob);
+document.body.appendChild(img);
+
+function convertDataURIToBinary(dataURI) {
+  var base64Index = dataURI.indexOf(BASE64_MARKER) + BASE64_MARKER.length;
+  var base64 = dataURI.substring(base64Index);
+  var raw = window.atob(base64);
+  var rawLength = raw.length;
+  var array = new Uint8Array(rawLength);
+
+  for(i = 0; i < rawLength; i++) {
+    array[i] = raw.charCodeAt(i);
+  }
+  return array;
+}
+
+
+Method 3: fetch() method:
+
+var canvas = document.getElementById('mycanvas');
+// draw something on canvas
+var dataURI = canvas.toDataURL('image/png');
+// convert to typed array
+var blob = convertDataURIToBinaryFetch(dataURI);
+var img = document.createElement('img');
+img.src = window.URL.createObjectURL(blob);
+document.body.appendChild(img);
+
+function convertDataURIToBinaryFetch(dataURI) {
+  return fetch(dataURI)
+    .then((res) => res.blob());
+}
+
+
+Method 4: toBlob() method:
+
+var canvas = document.getElementById('mycanvas');
+// draw something on canvas
+canvas.toBlob((blob) => {
+  var img = document.createElement('img');
+  img.src = window.URL.createObjectURL(blob);
+  document.body.appendChild(img);
+});
+
+
+Method 5: getImageData():
+
+var ctx = canvas.getContext('2d');
+var canvas = document.getElementById('mycanvas');
+// draw something on canvas
+var imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+// use `putImageData` to paint the data to the canvas, and use `toBlob()` method to get the data into an image
+
+
