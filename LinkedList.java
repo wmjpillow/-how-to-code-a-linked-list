@@ -51,6 +51,20 @@ public ListNode deleteDuplicates(ListNode head){
     return fakeHead.next;
 }
 
+//Swap Nodes in Pairs
+public ListNode swapPairs(ListNode head){
+    ListNode fakeHand= new ListNode(Integer.MIN_VALE);
+    fakeHead.next=head;
+    for(ListNode prev=fakeHead, p= head; p!=null && p.next!=null;){
+        ListNode temp=p.next.next;
+        prev.next=p.next;
+        p.next.next=p;
+        p.next=temp;
+        prev=p;
+        p=temp;
+    }
+    return fakeHead.next;
+}
 
 
 
