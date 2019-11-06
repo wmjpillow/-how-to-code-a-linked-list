@@ -221,7 +221,25 @@ public static int compareStringVal(String s1, String s2){
     else{return 1;}
 }
 
-
+//Longest Equal SubArray
+public static int longestEqualSubArray(int[] a){
+    for(int i=0; i<a.length; i++){
+        if(a[i]==0){ a[i]= -1;}
+    }
+    int[] prefixSum= new int[a.length+1];
+    for(int i=0; i<a.length; i++){
+        prefixSum[i+1]= prefixSum[i]+a[i];
+    }
+    int res=0;
+    for( int i=0; i<a.length; i++){
+        for( int j=1; j<=a.length; i++){
+            if(prefixSum[i]==prefixSum[j]){
+                res= Math.max(res,i-j);
+            }
+        }
+    }
+    return res;
+}
 
 
 
