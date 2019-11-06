@@ -241,7 +241,31 @@ public static int longestEqualSubArray(int[] a){
     return res;
 }
 
-
+//diagonalsSort
+public static void diagonalsSort(int[][] matrix){
+    int m=matrix.length;
+    int n=matrix[0].length;
+    for(int d=0; d<n; d++){
+        List<Integer> res= new ArrayList();
+        for(int i=0; i<n-d; i++){
+            res.add(matrix[i][i+d]);
+        }
+        Collections.sort(res);
+        for(int i=0; i<n-d; i++){
+            matrix[i][i+d]=res.get(i);
+        }
+        res.clear();
+        if(d!=0){
+            for(int i=0; i<n-d; i++){
+                res.add(matrix[i+d][i]);
+            }
+            Collections.sort(res);
+            for(int i=0; i< n-d; i++){
+                matrix[i+d][i]=res.get(i);
+            }
+        }
+    }
+}
 
 
 
