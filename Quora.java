@@ -349,3 +349,21 @@ public static String sumOfString(String s1, String s2){
     }
     return sb.toString();
 }
+
+//divide sub strings
+public static int divideSubString(String s, int k){
+    int res= 0;
+    int total= Integer.parseInt(s);
+    Set<Integer> set= new HashSet<Integer>();
+    for(int i=0; i<s.length()-k+1; i++){
+        String temp= s.substring(i,i+k);
+        int num= Integer.parseInt(temp);
+        if(!set.contains(num) && num!=0){
+            if(total% num==0){
+                res++;
+            }
+        }
+        set.add(num);
+    }
+    return res;
+}
