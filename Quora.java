@@ -323,3 +323,29 @@ public static void print2D(int[][] matrix){
     }
 }
 
+
+//sum of string
+public static String sumOfString(String s1, String s2){
+    if(s1==null||s1.length()==0){return s2;}
+    if(s2==null||s2.length()==0){return s1;}
+    int len1=s1.length();
+    int len2=s2.length();
+    StringBuilder sb= new StringBuilder();
+    int idx1= len1-1;
+    int idx2= len2-1;
+    while(idx1>=0 || idx2>=0){
+        char c1= s1.charAt(idx1--);
+        char c2= s2.charAt(idx2--);
+        int num1= c1-'0';
+        int num2= c2-'0';
+        sum= num1+num2;
+        sb.insert(0,Intger.toString(sum));
+    }
+    while(idx1>=0){
+        sb.insert(0,s1.charAt(idx1--));
+    }
+    while(idx2>=0){
+        sb.insert(0,s2.charAt(idx2--));
+    }
+    return sb.toString();
+}
