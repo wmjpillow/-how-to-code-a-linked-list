@@ -14,3 +14,9 @@ Pattern.matches("\\d+","2223");    //true
 Pattern.matches("\\d+","2223aa");   //false,需要匹配到所有字符串才能返回true,这里aa不能匹配到
 Pattern.matches("\\d+","22bb23");     //false,需要匹配到所有字符串才能返回true,这里bb不能匹配到
 
+//https://javatutorial.net/basic-java-regular-expressions
+String str= "Hello, it's me";
+String[] words= str.split(" ");
+for(String word: words){
+  System.out.println(word);
+}
