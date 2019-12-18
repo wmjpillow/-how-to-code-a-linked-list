@@ -263,4 +263,10 @@ $ git stash pop
 # 生成一个可供发布的压缩包
 $ git archive
 
+//https://stackoverflow.com/questions/2452226/master-branch-and-origin-master-have-diverged-how-to-undiverge-branches
+//master branch and 'origin/master' have diverged, how to 'undiverge' branches'
+
+$ git rebase origin/master
+$ git pull --rebase
+
 
