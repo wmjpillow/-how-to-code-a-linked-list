@@ -40,3 +40,26 @@ Public static int binarySearch( int[] arr, int start, int end, int hkey){
 
 // index -- A bunch of examples -- https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/ ( the array is sorted)
 // range -- https://leetcode.com/problems/find-the-duplicate-number/ (Unsorted Array)
+
+
+
+// https://vimsky.com/examples/usage/collections-binarysearch-java-examples.html
+ public static void main(String[] args) 
+    { 
+        List al = new ArrayList(); 
+        al.add(1); 
+        al.add(2); 
+        al.add(3); 
+        al.add(10); 
+        al.add(20); 
+  
+        // 10 is present at index 3. 
+        int index = Collections.binarySearch(al, 10); 
+        System.out.println(index); 
+  
+        // 13 is not present. 13 would have been inserted 
+        // at position 4. So the function returns (-4-1)  
+        // which is -5. 
+        index = Collections.binarySearch(al, 13); 
+        System.out.println(index); 
+    } 
