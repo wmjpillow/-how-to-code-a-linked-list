@@ -46,18 +46,20 @@ import java.util.*;
 
 class Solution {
   public static void main(String[] args) {
-    int[] array= {1,2,1,3};
+    int[] array= {1,2,1,2,5,4,2};
     Solution solution= new Solution();
-    System.out.println(solution.judge(array));
+    System.out.println(Arrays.toString(solution.judge(array)));
   }
   private Boolean[] judge(int[] array){
     Boolean[] results= new Boolean[array.length-2];
-    for(int i=0; i<array.length-2; i++){
-       if(array[i+1]>array[i] && array[i+1]>array[i+2]){
-         results[i]=true;}
-       if(array[i+1]<array[i] && array[i+1]<array[i+2]){
-         results[i]=true;}
-       else{results[i]=false;}
+    for(int i=1; i<array.length-1; i++){
+       if((array[i]-array[i-1])*(array[i]-array[i+1])>0){
+         results[i-1]=true;}
+       // if(array[i]>array[i-1] && array[i]>array[i+1]){
+       //   results[i-1]=true;}
+       // if(array[i]<array[i-1] && array[i]<array[i+1]){
+       //   results[i-1]=true;}
+       else{results[i-1]=false;}
     }
     return results;
   }
